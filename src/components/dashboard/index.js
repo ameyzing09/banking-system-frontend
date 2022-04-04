@@ -9,7 +9,7 @@ export default function Dashboard() {
     <button className='delete'>Delete</button>
     <button className='withdraw'>Cash Withdraw</button>
     <button className='deposit'>Cash Deposit</button>
-    <button className='cheque'>Cheque Deposit</button>
+    <button className='summary'>Summary</button>
     </div>
   )
 }
