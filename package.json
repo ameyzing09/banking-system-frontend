@@ -7,10 +7,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
-    "concurrently": "^7.1.0",
-    "electron": "^18.0.1",
-    "electron-builder": "^22.14.13",
-    "electron-is-dev": "^2.0.0",
+    "path": "^0.12.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
@@ -19,9 +16,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-package": "./node_modules/.bin/electron-builder -c.extraMetadata.main=build/start-electron.js",
-    "preelectron-package": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -43,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.3.0"
   }
 }
