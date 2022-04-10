@@ -16,7 +16,7 @@
     padding: 0.3rem;
 }
 
-input{
+#loginId, #passwordTag{
     margin: 0.2rem 0 0.2rem 10rem;
     width: 18rem;
     height: 2em;
