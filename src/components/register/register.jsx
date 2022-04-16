@@ -12,11 +12,14 @@ const handleChange = event => {
 
 const handleSubmit = async e => {
     e.preventDefault()
-    const response = await axios.post('http://localhost:8080/accountRegistration', input)
-    console.log("Response : ", response.data)
-    setInput({})
-    alert(`Account created successfully and account number is ${response.data.accountNumber}`)
-    
+    try{
+      const response = await axios.post('http://localhost:8080/accountOpening', input)
+      console.log("Response : ", response.data)
+      alert(`Account created successfully and account number is ${response.data.accountNumber}`)
+    } catch (err){
+      console.error("Error in account registration! Something went wrong!!: ", err)
+      alert("Something went wrong!!! Please try again later\nServer is unreachable...!!")
+    }
 }
   return (
     <div className="register-div">
