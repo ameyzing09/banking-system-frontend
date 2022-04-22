@@ -1,0 +1,27 @@
+
+.loginTab{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 20em;
+    height: 50rem;
+}
+
+.loginBtn{
+    border-radius: 0.5em;
+    background-color: rgb(111, 118, 248);
+    color: aliceblue;
+    border: none;
+    padding: 1em;
+    margin: 0 auto;
+    width: 5em;
+    height: 3em;
+} 
+
+#loginId, #passwordTag{
+    margin: 1em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 1em;
+}

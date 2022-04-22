@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './index.css'
+import './AccountOpening.css'
+import { Link } from 'react-router-dom'
 
-export default function Register() {
+export default function AccountOpening() {
 const [input, setInput] = useState({})
 
 const handleChange = event => {
@@ -25,7 +26,7 @@ const handleSubmit = async e => {
   return (
     <div className="register-div">
       <form onSubmit={handleSubmit} method="post">
-          <h1>Account Opening</h1>
+          <h1 className='register-heading'>Account Opening</h1>
           <label>Full Name</label>
           <input onChange={handleChange} required type="text" name="accountHolderName" id="account-holder-name" placeholder='Enter customer name' />
           <label htmlFor="account-holder-address">Address</label>
@@ -50,6 +51,7 @@ const handleSubmit = async e => {
           <label htmlFor="account-holder-balance">Balance</label>
           <input onChange={handleChange} required id="account-holder-balance" type="number" name="accountHolderBalance" placeholder='Enter customer account balance' defaultValue={0}/>
           <input type="submit" className="submitBtn" />
+          <Link to='/dashboard'><input type="submit" value="Back" className="backBtn" /></Link>
       </form>
     </div>
   )
