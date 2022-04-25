@@ -9,7 +9,15 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import AccountOpening from "./components/AccountOpening/AccountOpening";
 
 function App() {
-  const [loginData, setLoginData] = useState({});
+  const [loginData, setLoginData] = useState({
+      accountHolderName: "",
+      accountHolderAddress: "",
+      accountHolderPhone: "",
+      accountHolderDob: "",
+      accountHolderGender: "",
+      accountHolderType: "",
+      accountHolderBalance: 0
+  });
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   return (
     <Router>
