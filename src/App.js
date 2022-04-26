@@ -20,13 +20,13 @@ function App() {
             exact
             path='/'
             element={
-              // <Login
-              //   loginData={loginData}
-              //   setLoginData={setLoginData}
-              //   userLoggedIn={userLoggedIn}
-              //   setUserLoggedIn={setUserLoggedIn}
-              // />
-              <ViewTransaction/>
+               <Login
+                  loginData={loginData}
+                  setLoginData={setLoginData}
+                  userLoggedIn={userLoggedIn}
+                  setUserLoggedIn={setUserLoggedIn}
+               />
+              // <ViewTransaction/>
             }
           />
           <Route path='dashboard' element={<Dashboard />} exact/>

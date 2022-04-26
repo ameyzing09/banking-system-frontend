@@ -1,0 +1,13 @@
+.ViewTransaction{
+    width: auto;
+}
+.Transaction{
+    padding: 3rem;
+    width: 70%;
+    text-align: center;
+    margin-left:15%; 
+    margin-right:15%;
+}
+.table-row{
+    background-color: white;
+}
