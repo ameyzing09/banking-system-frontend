@@ -7,7 +7,7 @@ import "./App.css";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AccountOpening from "./components/AccountOpening/AccountOpening";
-import ViewTransaction from "./components/ViewTransaction/ViewTransaction";
+import ViewTransaction from "./components/ViewTransaction/ViewTransaction"
 
 function App() {
   const [loginData, setLoginData] = useState({});
@@ -20,13 +20,12 @@ function App() {
             exact
             path='/'
             element={
-               <Login
-                  loginData={loginData}
-                  setLoginData={setLoginData}
-                  userLoggedIn={userLoggedIn}
-                  setUserLoggedIn={setUserLoggedIn}
-               />
-              // <ViewTransaction/>
+              <Login
+                loginData={loginData}
+                setLoginData={setLoginData}
+                userLoggedIn={userLoggedIn}
+                setUserLoggedIn={setUserLoggedIn}
+              />
             }
           />
           <Route path='dashboard' element={<Dashboard />} exact/>
