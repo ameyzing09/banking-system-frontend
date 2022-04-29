@@ -29,6 +29,7 @@ export default function Login({
   };
 
   const handleLoginSubmit = async () => {
+    console.info("In handleLoginSubmit()");
     if (loginData) {
       try {
         console.info("loginData", loginData);
@@ -65,7 +66,7 @@ export default function Login({
   return (
     <>
       {/* <label htmlFor='loginId'>Login ID</label> */}
-      <form className='loginTab' onSubmit={handleLoginSubmit}>
+      <form className='loginTab'>
         <input
           onChange={handleLoginInputChange}
           name='username'
@@ -83,7 +84,13 @@ export default function Login({
           type='password'
           required
         />
-        <input type='submit' className='loginBtn' value='Login' />
+        <button
+          type='submit'
+          className='loginBtn'
+          onClick={handleLoginSubmit}
+        >
+        Login
+        </button>
       </form>
     </>
   );
