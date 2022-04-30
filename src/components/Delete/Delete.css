@@ -1,0 +1,9 @@
+.delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 30em;
+    height: 10rem;
+    padding: 10em;
+}
