@@ -4,25 +4,21 @@ import './CashDeposit.css'
 function CashDeposit() {
   return (
     
-    <form className='deposit'>
-      <label>Enter account holder name:
-        <input type="text" />
-      </label>
-      <label>Enter your Account no:
-        <input type="text" />
-      </label>
-      <label>Enter amount in numbers:
-        <input type="text" />
-      </label>
-      <label>Enter amount in words:
-        <input type="text" />
-      </label>
-      <label>Enter number of notes:
-        <input type="text" />
-      </label>
-      <input type="submit" className="submitBtn"/>
-          
-    </form>
+  <div className="depForm">
+    <div className="depositForm">
+      <label>Account number</label>
+      <input type="text" className="acNo" placeholder="Account Number"/>
+      <label>Customer name</label>
+      <input type="text" className="custName" placeholder="Account number"/>
+      <label>Amount in words</label>
+      <input type="text" className="amtWrds" placeholder="Account number"/>
+      <label>Amount in figures</label>
+      <input type="text" className="amtFigs" placeholder="Account number"/>
+
+      <input type="submit" className="depositBtn" value="deposit"/>
+      <input type="submit" className="backBtn" value="back"/>
+    </div>
+  </div>
 )
   }
 

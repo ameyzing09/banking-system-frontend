@@ -1,9 +1,31 @@
-.withdraw{
+.withForm{
+    background-color: antiquewhite;
+  }
+  
+  .withdrawForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    width: 30em;
-    height: 10rem;
-    padding: 7em;
-}
+    width: 20em;
+    height: 50rem;
+  }
+  
+  .withdrawBtn, .backBtn{
+    border-radius: 0.5em;
+    background-color: rgb(111, 118, 248);
+    color: aliceblue;
+    border: none;
+    padding: 0.5em;
+    margin: 0.5em auto;
+    width: 5em;
+    height: 3em;
+  } 
+  
+  .actNo, .cusName, .amtWrd, .amtFig{
+      margin: 1em;
+      padding: 0.5em;
+      border: none;
+      border-radius: 1em;
+  }
+    

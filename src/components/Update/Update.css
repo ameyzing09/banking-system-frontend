@@ -1,8 +1,8 @@
-.depForm{
+.updForm{
     background-color: antiquewhite;
   }
   
-  .depositForm{
+  .updateForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +11,7 @@
     height: 50rem;
   }
   
-  .depositBtn, .backBtn{
+  .nameBtn, .addressBtn, .phnNoBtn, .updateBtn, .backBtn{
     border-radius: 0.5em;
     background-color: rgb(111, 118, 248);
     color: aliceblue;
@@ -22,7 +22,7 @@
     height: 3em;
   } 
   
-  .acNo, .custName, .amtWrds, .amtFigs{
+  .cName, .cAddress, .cPhnNo{
       margin: 1em;
       padding: 0.5em;
       border: none;
