@@ -31,6 +31,7 @@ function App() {
           />
           <Route path='dashboard' element={<Dashboard />} exact/>
           <Route path='accountOpening' element={<AccountOpening />} exact/>
+          <Route path='viewTransaction' element={<ViewTransaction />} exact/>
           {/* <Route path='*' element={<Login />} /> */}
         </Routes>
       </div>
