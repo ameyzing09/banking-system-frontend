@@ -23,7 +23,7 @@ function CashDeposit() {
       ) : (
         <div>
             {
-              Object.keys(accountDetails).length > 0 ? (
+              Object.key
             }
         </div>
       )}
