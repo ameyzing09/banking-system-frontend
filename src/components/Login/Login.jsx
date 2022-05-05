@@ -10,7 +10,7 @@ export default function Login({
   setUserLoggedIn,
 }) {
   let navigate = useNavigate();
-  
+
   useEffect(() => {
     console.log("Login component mounted");
     if (
@@ -22,7 +22,6 @@ export default function Login({
       navigate("/dashboard");
     }
   }, [setLoginData, navigate]);
-
 
   const handleLoginInputChange = (e) => {
     const { name, value } = e.target;
@@ -64,28 +63,28 @@ export default function Login({
     }
   };
   return (
-    <div className='loginTab'>
+    <>
       {/* <label htmlFor='loginId'>Login ID</label> */}
-      <input
-        onChange={handleLoginInputChange}
-        name='username'
-        placeholder='Enter your login ID'
-        id='loginId'
-        type='text'
-        required
-      />
-      {/* <label htmlFor='passwordTag'>Password</label> */}
-      <input
-        onChange={handleLoginInputChange}
-        name='password'
-        placeholder='Enter your password'
-        id='passwordTag'
-        type='password'
-        required
-      />
-      <button className='loginBtn' onClick={handleLoginSubmit}>
-        Login
-      </button>
-    </div>
+      <form className='loginTab' onSubmit={handleLoginSubmit}>
+        <input
+          onChange={handleLoginInputChange}
+          name='username'
+          placeholder='Enter your login ID'
+          id='loginId'
+          type='text'
+          required
+        />
+        {/* <label htmlFor='passwordTag'>Password</label> */}
+        <input
+          onChange={handleLoginInputChange}
+          name='password'
+          placeholder='Enter your password'
+          id='passwordTag'
+          type='password'
+          required
+        />
+        <input type='submit' className='loginBtn' value='Login' />
+      </form>
+    </>
   );
 }

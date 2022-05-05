@@ -11,7 +11,15 @@ import ViewTransaction from "./components/ViewTransaction/ViewTransaction"
 import CashDeposit from './components/CashDeposit/CashDeposit';
 
 function App() {
-  const [loginData, setLoginData] = useState({});
+  const [loginData, setLoginData] = useState({
+      accountHolderName: "",
+      accountHolderAddress: "",
+      accountHolderPhone: "",
+      accountHolderDob: "",
+      accountHolderGender: "",
+      accountHolderType: "",
+      accountHolderBalance: 0
+  });
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   return (
     <Router>
@@ -21,12 +29,13 @@ function App() {
             exact
             path='/'
             element={
-              <Login
-                loginData={loginData}
-                setLoginData={setLoginData}
-                userLoggedIn={userLoggedIn}
-                setUserLoggedIn={setUserLoggedIn}
-              />
+               <Login
+                  loginData={loginData}
+                  setLoginData={setLoginData}
+                  userLoggedIn={userLoggedIn}
+                  setUserLoggedIn={setUserLoggedIn}
+               />
+              // <ViewTransaction/>
             }
           />
           <Route path='dashboard' element={<Dashboard />} exact/>
