@@ -32,7 +32,7 @@ export default function Dashboard() {
       <Link className='sidebar update' to='/accountOpening'>Update</Link>
       <Link className='sidebar delete' to='/accountOpening'>Delete</Link>
       <Link className='sidebar withdraw' to='/accountOpening'>Cash Withdraw</Link>
-      <Link className='sidebar deposit' to='/accountOpening'>Cash Deposit</Link>
+      <Link className='sidebar deposit' to='/cashDeposit'>Cash Deposit</Link>
       <Link className='sidebar summary' to='/accountOpening'>Summary</Link>
       <span className='sidebar logout' onClick={handleLogout}>
         Logout

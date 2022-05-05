@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AccountOpening from "./components/AccountOpening/AccountOpening";
 import ViewTransaction from "./components/ViewTransaction/ViewTransaction"
+import CashDeposit from './components/CashDeposit/CashDeposit';
 
 function App() {
   const [loginData, setLoginData] = useState({});
@@ -30,6 +31,8 @@ function App() {
           />
           <Route path='dashboard' element={<Dashboard />} exact/>
           <Route path='accountOpening' element={<AccountOpening />} exact/>
+          <Route path='viewTransaction' element={<ViewTransaction />} exact/>
+          <Route path='cashDeposit' element={<CashDeposit />} />
           {/* <Route path='*' element={<Login />} /> */}
         </Routes>
       </div>
