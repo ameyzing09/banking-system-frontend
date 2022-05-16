@@ -7,9 +7,7 @@ import "./App.css";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AccountOpening from "./components/AccountOpening/AccountOpening";
-import ViewTransaction from "./components/ViewTransaction/ViewTransaction"
-import CashDeposit from './components/CashDeposit/CashDeposit';
-import Delete from './components/Delete/Delete';
+import ViewTransaction from "./components/ViewTransaction/ViewTransaction";
 
 function App() {
   const [loginData, setLoginData] = useState({
@@ -42,8 +40,6 @@ function App() {
           <Route path='dashboard' element={<Dashboard />} exact/>
           <Route path='accountOpening' element={<AccountOpening />} exact/>
           <Route path='viewTransaction' element={<ViewTransaction />} exact/>
-          <Route path='delete' element={<Delete />} exact />
-          <Route path='transaction' element={<CashDeposit />} />
           {/* <Route path='*' element={<Login />} /> */}
         </Routes>
       </div>

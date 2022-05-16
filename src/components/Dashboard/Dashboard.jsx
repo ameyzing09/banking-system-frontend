@@ -29,8 +29,10 @@ export default function Dashboard() {
   return (
     <div className='dashboard'>
       <Link className='sidebar register bold' to='/accountOpening'>Register</Link>
-      <Link className='sidebar delete' to='/delete'>Delete</Link>
-      <Link className='sidebar deposit' to='/transaction'>Transaction</Link>
+      <Link className='sidebar update' to='/accountOpening'>Update</Link>
+      <Link className='sidebar delete' to='/accountOpening'>Delete</Link>
+      <Link className='sidebar withdraw' to='/accountOpening'>Cash Withdraw</Link>
+      <Link className='sidebar deposit' to='/accountOpening'>Cash Deposit</Link>
       <Link className='sidebar summary' to='/viewTransaction'>Summary</Link>
       <span className='sidebar logout' onClick={handleLogout}>
         Logout

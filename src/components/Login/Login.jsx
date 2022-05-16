@@ -17,7 +17,6 @@ export default function Login({
       localStorage.getItem("userLoggedIn") === null ||
       localStorage.getItem("userLoggedIn") === "false"
     ) {
-      console.log("In check()");
       setLoginData({});
     } else {
       navigate("/dashboard");
@@ -26,8 +25,6 @@ export default function Login({
 
   const handleLoginInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
-    console.log(loginData);
     setLoginData({ ...loginData, [name]: value });
   };
 
@@ -68,7 +65,7 @@ export default function Login({
   return (
     <>
       {/* <label htmlFor='loginId'>Login ID</label> */}
-      <div className='loginTab'>
+      <form className='loginTab' onSubmit={handleLoginSubmit}>
         <input
           onChange={handleLoginInputChange}
           name='username'
@@ -86,13 +83,8 @@ export default function Login({
           type='password'
           required
         />
-        <input
-          type='submit'
-          className='loginBtn'
-          onClick={handleLoginSubmit}
-          value='Login'
-        />
-      </div>
+        <input type='submit' className='loginBtn' value='Login' />
+      </form>
     </>
   );
 }

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./ViewTransaction.css";
 // import Dashboard from "../Dashboard/Dashboard";
-// import TableContext from "../../services/tableContext";
 
 function TableRow({ transactionArray }) {
   console.info("in TableRow: ", transactionArray);
@@ -23,7 +22,6 @@ function ViewTransaction() {
     accountNumber: "",
   });
   const [transactionHeading, setTransactionHeading] = useState([]);
-
   const handleSearchInputChange = (e) => {
     const { name, value } = e.target;
     setSearchInput({ ...searchInput, [name]: value });
@@ -66,7 +64,6 @@ function ViewTransaction() {
   };
   return (
     <div className='view-transaction'>
-      {/* <TableContext.Provider value={tableData}> */}
       {/* <Dashboard /> */}
       <div className='search-div'>
         <input
@@ -122,7 +119,6 @@ function ViewTransaction() {
           className='backBtn'
         />
       </Link>
-      {/* </TableContext.Provider> */}
     </div>
   );
 }
