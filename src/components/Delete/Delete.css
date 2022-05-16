@@ -1,0 +1,30 @@
+.delForm{
+    background-color: antiquewhite;
+  }
+  
+  .deleteForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 20em;
+    height: 50rem;
+  }
+  
+  .deleteBtn, .backBtn{
+    border-radius: 0.5em;
+    background-color: rgb(111, 118, 248);
+    color: aliceblue;
+    border: none;
+    padding: 0.5em;
+    margin: 0.5em auto;
+    width: 5em;
+    height: 3em;
+  } 
+  
+  .custId, .accNo{
+      margin: 1em;
+      padding: 0.5em;
+      border: none;
+      border-radius: 1em;
+  }
