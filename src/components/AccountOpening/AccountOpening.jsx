@@ -16,11 +16,13 @@ const handleSubmit = async e => {
     try{
       const response = await axios.post('http://localhost:8080/accountOpening', input)
       console.log("Response : ", response.data)
-      alert(`Account created successfully and account number is ${response.data.accountNumber}`)
+      alert(`Account created successfully and account number is ${response.data.data.accountNumber}`)
+      setInput({})
     } catch (err){
       console.error("Error : ", err)
       // console.error("Error in account registration! Something went wrong!!: ", err)
       alert("Something went wrong!!! Please try again later\nServer is unreachable...!!")
+      setInput({});
     }
 }
   return (

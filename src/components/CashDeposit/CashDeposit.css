@@ -12,6 +12,31 @@
   margin: 2rem auto;
 }
 
+.transaction-type-center-div{
+  margin: 0 auto;
+}
+
+.summary-back-link{
+  /* padding: 3rem; */
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.search-account-result-div > *{
+  padding: 1rem;
+}
+
+.account-head-span{
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.no-account-found{
+  text-align: center;
+}
+
 #fetch-account-input{
   width: 15rem;
   text-indent: 1rem;
@@ -41,22 +66,23 @@
 
 
 .deposit-btn,
-.back-btn {
+.back-btn,
+.reset-btn {
   border-radius: 0.5em;
   background-color: rgb(111, 118, 248);
   color: aliceblue;
   border: none;
   padding: 0.5em;
   margin: 0.5em;
-  width: 4rem;
+  width: 8rem;
   height: 2rem;
 }
 
-
 .amount-input {
+  width: 20%;
   margin: 1rem auto;
   padding: 0.5rem;
   border: none;
-  border-radius: 1rem;
-  text-indent: 1rem;
+  border-radius: .5rem;
+  text-indent: .25rem;
 }
