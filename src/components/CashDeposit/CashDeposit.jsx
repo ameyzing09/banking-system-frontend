@@ -2,24 +2,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Loader } from "react-loader-spinner";
-import "./CashDeposit.css";
 
-function AccountDetailsSpan({ header, accountDetailsSpan, accountDetails }) {
-  return accountDetailsSpan.map((key, index) => {
-    if (header.key === key) {
-      return (
-        <div
-          className='transaction-type-center-div search-account-result-div'
-          key={index}
-        >
-          <span className='account-head-span'>{header.value}</span>
-          <span className='account-text-span'>{accountDetails[key]}</span>
-        </div>
-      );
-    }
-  });
-}
+import AccountDetailsSpan from '../AccountDetailsSpan';
+
+import "./CashDeposit.css";
 
 function CashDeposit() {
   // const [isLoading, setLoading] = useState(false);
@@ -111,44 +97,48 @@ function CashDeposit() {
   return (
     <div>
       <div className='deposit-form-div'>
-        <div className='transaction-type-center-div search-account-div'>
+        <div className='center-div search-account-div'>
           <input
             type='text'
             name='accountNumber'
             onChange={handleFetchChange}
             value={accountNumberInput}
-            id='fetch-account-input'
-            className='search-account-no'
+            className='fetch-account-input'
             placeholder='Enter account number to deposit'
           />
 
           <input
             type='submit'
             onClick={handleFetch}
-            id='fetch-details-btn'
+            className='fetch-details-btn'
             placeholder='Fetch'
           />
         </div>
         {/* <div className="search-account-result-div"> */}
         {accountHeader.length > 0 ? (
-          accountHeader.map((head) => {
+          accountHeader.map((head, index) => {
             const accountDetailsSpan = Object.keys(accountDetails);
             return (
+              <div
+            className='center-div search-account-result-div'
+            key={index}
+          >
               <AccountDetailsSpan
                 header={head}
                 accountDetailsSpan={accountDetailsSpan}
                 accountDetails={accountDetails}
               />
+            </div>
             );
           })
         ) : (
           <h1 className='no-account-found'>No account Found</h1>
         )}
-        <div className='transaction-type-center-div'>
+        <div className='center-div search-account-div'>
           <input
             type='radio'
             name='transactionType'
-            id='selectTransaction'
+            id='select-transaction'
             value='cashDeposit'
             checked={transactionType === "cashDeposit"}
             onChange={handleTransactionChange}
@@ -175,7 +165,7 @@ function CashDeposit() {
           <input
             type='submit'
             onClick={handleAmountSubmit}
-            className='deposit-btn'
+            className='submit-btn'
             value='Deposit/Withdraw'
           />
           <input

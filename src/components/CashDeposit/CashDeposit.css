@@ -9,11 +9,8 @@
 .search-account-div {
   display: flex;
   flex-direction: row;
+  /* margin-bottom: 0; */
   margin: 2rem auto;
-}
-
-.transaction-type-center-div{
-  margin: 0 auto;
 }
 
 .summary-back-link{
@@ -27,22 +24,20 @@
   padding: 1rem;
 }
 
-.account-head-span{
-  display: inline-block;
-  font-weight: bold;
-  vertical-align: middle;
-}
-
 .no-account-found{
   text-align: center;
 }
 
-#fetch-account-input{
+.fetch-account-input{
   width: 15rem;
-  text-indent: 1rem;
+  text-indent: .5rem;
 }
 
-#fetch-details-btn {
+.fetch-account-input .fetch-details-btn{
+  margin-left: 1rem;
+}
+
+.fetch-details-btn {
   border-radius: 0.5rem;
   background-color: rgb(111, 118, 248);
   color: aliceblue;
@@ -55,7 +50,6 @@
 .search-account-div input{
   border: none;
   border-radius: 1rem;
-  margin: 1rem;
 }
 
 .nav-btn{
@@ -65,7 +59,7 @@
 }
 
 
-.deposit-btn,
+.submit-btn,
 .back-btn,
 .reset-btn {
   border-radius: 0.5em;
