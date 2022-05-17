@@ -1,30 +1,45 @@
-.delForm{
-    background-color: antiquewhite;
-  }
-  
-  .deleteForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    width: 20em;
-    height: 50rem;
-  }
-  
-  .deleteBtn, .backBtn{
-    border-radius: 0.5em;
-    background-color: rgb(111, 118, 248);
-    color: aliceblue;
-    border: none;
-    padding: 0.5em;
-    margin: 0.5em auto;
-    width: 5em;
-    height: 3em;
-  } 
-  
-  .custId, .accNo{
-      margin: 1em;
-      padding: 0.5em;
-      border: none;
-      border-radius: 1em;
-  }
+.delete-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.delete-confirm-btn-div{
+  display: flex;
+  /* flex-direction: row; */
+}
+
+#show{
+  /* visibility: visible; */
+  display: flex;
+}
+
+#hide{
+  /* visibility: hidden; */
+  display: none;
+}
+
+.fetch-account-input-to-delete{
+  width: 20rem;
+  height: auto;
+  text-indent: .5rem;
+  /* padding: 1rem; */
+}
+
+.delete-confirmation-div{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: aliceblue;
+  border-radius: .5rem;
+  padding: 2rem;
+}
+
+.delete-confirmation-yes-no-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
