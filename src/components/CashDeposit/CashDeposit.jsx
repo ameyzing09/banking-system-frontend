@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Snackbar } from "@mui/material";
 
 import AccountDetailsSpan from '../AccountDetailsSpan';
 
@@ -14,6 +15,8 @@ function CashDeposit() {
   const [accountDetails, setAccountDetails] = useState({});
   const [transactionType, setTransactionType] = useState("");
   const [amountInput, setAmountInput] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleFetchChange = (event) => {
@@ -41,7 +44,8 @@ function CashDeposit() {
       console.log("getAccountDetails : ", accountDetails);
     } catch (error) {
       console.error("Error : ", error);
-      alert(error.response.data.error.message);
+      setErrorMessage(error.response.data.error.message);
+      setOpen(true);
       setAccountNumberInput("");
     }
     // setAccountDetails(await getAccountDetails.json());
@@ -58,7 +62,8 @@ function CashDeposit() {
     if (e.target.value > 0 || e.target.value === "") {
       setAmountInput(e.target.value);
     } else {
-      alert("Please enter valid amount");
+      setErrorMessage("Amount should be greater than 0");
+      setOpen(true);
     }
   };
 
@@ -79,16 +84,19 @@ function CashDeposit() {
       setAccountDetails("");
       console.log("Transaction Response : ", transactionResponse.data);
       if (transactionResponse.data.data.code === 200) {
-        alert(transactionResponse.data.data.message);
+        setErrorMessage(transactionResponse.data.data.message);
+        setOpen(true);
       } else if (transactionResponse.data.error.code === 400) {
-        alert(transactionResponse.data.error.message);
+        setErrorMessage(transactionResponse.data.error.message);
+        setOpen(true);
       }
     } catch (error) {
       console.error(
         `Error in ${transactionType}: `,
         error.response.data.error.message
       );
-      alert(error.response.data.error.message);
+      setErrorMessage(error.response.data.error.message);
+      setOpen(true);
       setAmountInput("");
       setTransactionType("");
       setAccountDetails("");
@@ -96,6 +104,13 @@ function CashDeposit() {
   };
   return (
     <div>
+      <Snackbar
+        message={errorMessage}
+        autoHideDuration={4000}
+        open={open}
+        onClose={() => setOpen(false)}
+
+      />
       <div className='deposit-form-div'>
         <div className='center-div search-account-div'>
           <input

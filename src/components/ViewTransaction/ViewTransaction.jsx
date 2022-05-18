@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Snackbar } from "@mui/material";
 import "./ViewTransaction.css";
 // import Dashboard from "../Dashboard/Dashboard";
 // import TableContext from "../../services/tableContext";
@@ -18,6 +19,8 @@ function TableRow({ transactionArray }) {
 }
 
 function ViewTransaction() {
+  const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState({ accountNumber: "" });
   const [transactionData, setTransactionData] = useState({
     accountNumber: "",
@@ -53,7 +56,8 @@ function ViewTransaction() {
         });
       } catch (error) {
         console.error(error);
-        alert("Error fetching data");
+        setSnackBarMessage("Error fetching data");
+        setOpen(true);
         setTransactionData({
           accountNumber: "",
         });
@@ -66,6 +70,12 @@ function ViewTransaction() {
   };
   return (
     <div className='view-transaction'>
+      <Snackbar
+        open={open}
+        message={snackBarMessage}
+        autoHideDuration={3000}
+        onClose={() => setOpen(false)}
+      />
       {/* <TableContext.Provider value={tableData}> */}
       {/* <Dashboard /> */}
       <div className='search-div'>

@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Snackbar } from "@mui/material";
 import "./Login.css";
 
 export default function Login({
@@ -10,6 +11,9 @@ export default function Login({
   setUserLoggedIn,
 }) {
   let navigate = useNavigate();
+
+  const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     console.log("Login component mounted");
@@ -52,23 +56,32 @@ export default function Login({
       } catch (err) {
         console.error("Error in login : ", err.code);
         if (err.code === 401) {
-          alert("Invalid username or password");
+          setSnackBarMessage("Invalid username or password");
+          setOpen(true);
         }
         if (userLoggedIn && localStorage.getItem("userLoggedIn") === "true") {
           localStorage.setItem("userLoggedIn", userLoggedIn);
-          alert("User already logged in");
+          setSnackBarMessage("User already logged in");
+          setOpen(true);
           navigate("/dashboard");
         }
       }
     } else {
       console.info("In else statement");
-      alert("Please enter username or password. Something is missing.");
+      setSnackBarMessage("Please enter username or password. Something is missing.");
+      setOpen(true);
     }
   };
   return (
     <>
       {/* <label htmlFor='loginId'>Login ID</label> */}
       <div className='loginTab'>
+        <Snackbar
+          open={open}
+          message={snackBarMessage}
+          autoHideDuration={3000}
+          onClose={() => setOpen(false)}
+        />
         <input
           onChange={handleLoginInputChange}
           name='username'

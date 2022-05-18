@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Snackbar } from "@mui/material";
 import "./Dashboard.css";
 
 export default function Dashboard() {
   let navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     console.log('Dashboard component mounted');
     if (localStorage.getItem("userLoggedIn") === null || localStorage.getItem("userLoggedIn") === "false") {
@@ -21,13 +23,20 @@ export default function Dashboard() {
       navigate("/");
     } else {
       console.log("User not logged in");
-      alert("User not logged in");
+      setErrorMessage("User not logged in");
+      setOpen(true);
       navigate("/");
     }
   };
 
   return (
     <div className='dashboard'>
+      <Snackbar 
+        open={open}
+        message={errorMessage}
+        autoHideDuration={3000}
+        onClose={() => setOpen(false)}
+      />
       <Link className='sidebar register bold' to='/accountOpening'>Register</Link>
       <Link className='sidebar delete' to='/delete'>Delete</Link>
       <Link className='sidebar deposit' to='/transaction'>Transaction</Link>

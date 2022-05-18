@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+  Snackbar,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@mui/material";
 
 import AccountDetailsSpan from "../AccountDetailsSpan";
 
 import "./Delete.css";
 
 function Delete() {
+  const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [open, setOpen] = useState(false);
   const [accountNumberInput, setAccountNumberInput] = useState("");
   const [accountHeader, setAccountHeader] = useState([]);
   const [accountDetails, setAccountDetails] = useState({});
-  // const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
   const [showConfirmBtn, setShowConfirmBtn] = useState(false);
 
   const navigate = useNavigate();
@@ -41,7 +51,8 @@ function Delete() {
       console.log("getAccountDetails : ", accountDetails);
     } catch (error) {
       console.error("Error : ", error);
-      alert(error.response.data.error.message);
+      setSnackBarMessage(error.response.data.error.message);
+      setOpen(true);
       // setAccountNumberInput("");
       setShowConfirmBtn(false);
     }
@@ -52,45 +63,64 @@ function Delete() {
   const handleDeleteClick = async (e) => {
     // setShowConfirmationDialog(!showConfirmationDialog);
     e.preventDefault();
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this account?"
-    );
+    // const confirmDelete = window.confirm(
+    //   "Are you sure you want to delete this account?"
+    // );
+    console.log("confirm: ", showConfirmationDialog)
+    setShowConfirmationDialog(true);
+  };
+
+  const handleConfirmDeleteClick = async (e) => {
+    e.preventDefault();
     console.log("accountNumberInput : ", accountNumberInput);
-    if (confirmDelete === true) {
-      try {
-        const deleteAccountResponse = await axios.post(
-          "http://localhost:8080/deleteAccount",
-          {
-            accountNumber: accountNumberInput,
-          }
-        );
-        console.log("deleteAccountResponse : ", deleteAccountResponse);
-        if (deleteAccountResponse.data.data.code === 200) {
-          alert(deleteAccountResponse.data.data.message);
-          setAccountNumberInput("");
-          setShowConfirmBtn(false);
-          setAccountDetails({});
-          setAccountHeader([]);
-        } else if (deleteAccountResponse.data.data.code === 400) {
-          alert(deleteAccountResponse.data.data.message);
-          setAccountNumberInput("");
-          setShowConfirmBtn(false);
-          setAccountDetails({});
-          setAccountHeader([]);
+    // if (confirmDelete === true) {
+    try {
+      const deleteAccountResponse = await axios.post(
+        "http://localhost:8080/deleteAccount",
+        {
+          accountNumber: accountNumberInput,
         }
-      } catch (err) {
-        console.error("Error : ", err.response.data.error);
-        alert(err.response.data.error.message);
+      );
+      console.log("deleteAccountResponse : ", deleteAccountResponse);
+      if (deleteAccountResponse.data.data.code === 200) {
+        setSnackBarMessage(deleteAccountResponse.data.data.message);
+        setOpen(true);
+        setShowConfirmationDialog(false);
+        setAccountNumberInput("");
+        setShowConfirmBtn(false);
+        setAccountDetails({});
+        setAccountHeader([]);
+      } else if (deleteAccountResponse.data.data.code === 400) {
+        setSnackBarMessage(deleteAccountResponse.data.data.message);
+        setOpen(true);
+        setShowConfirmationDialog(false);
         setAccountNumberInput("");
         setShowConfirmBtn(false);
         setAccountDetails({});
         setAccountHeader([]);
       }
+    } catch (err) {
+      console.error("Error : ", err.response.data.error);
+      setSnackBarMessage(err.response.data.error.message);
+      setOpen(true);
+      setShowConfirmationDialog(false);
+      setAccountNumberInput("");
+      setShowConfirmBtn(false);
+      setAccountDetails({});
+      setAccountHeader([]);
     }
   };
 
   return (
     <div className='delete-div'>
+      <div>
+        <Snackbar
+          open={open}
+          message={snackBarMessage}
+          autoHideDuration={3000}
+          onClose={() => setOpen(false)}
+        />
+      </div>
       <div className='search-account-div'>
         {/* <h1>Delete account number</h1> */}
         <input
@@ -170,6 +200,28 @@ function Delete() {
           className='back-btn'
           value='Cancel'
         />
+      </div>
+      <div>
+        <Dialog
+          open={showConfirmationDialog}
+          onClose={() => setShowConfirmationDialog(false)}
+        >
+          <DialogTitle>Confirmation</DialogTitle>
+          <DialogContent>
+            <h3>Are you sure you want to delete this account?</h3>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => setShowConfirmationDialog(false)}
+              color='primary'
+            >
+              Cancel
+            </Button>
+            <Button onClick={handleConfirmDeleteClick} color='primary'>
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </div>
   );
